@@ -1,0 +1,14 @@
+.Products{
+    width: 90%;
+    margin: auto;
+}
+.Product{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 150px;
+    border: 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+}
