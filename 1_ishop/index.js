@@ -1,3 +1,4 @@
+var shopName ='Очень красивое название для магазина';
 var productArr = [
     {name:'Материнская плата Gigabyte',
     prise:150,
@@ -31,9 +32,7 @@ var ProductBlock = React.createClass({
     getDefaultProps: function() {
         return { inStock: "Нет на складе" }
     },
-
     render: function(){
-
         var productsCode = [];
         for(var i=0; i < this.props.card.length; i++ ){
             var product = this.props.card[i];
@@ -46,7 +45,6 @@ var ProductBlock = React.createClass({
             );
             productsCode.push(productCode); 
         }
-
         return React.DOM.div({className:'ProductBlock'},
         React.DOM.div({className:'Products'},productsCode),
         );
