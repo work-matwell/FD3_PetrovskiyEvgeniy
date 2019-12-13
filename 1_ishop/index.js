@@ -12,10 +12,10 @@ var ProductBlock = React.createClass({
             var thElement = this.props.tHeader[n];
             var headerCode =
             React.DOM.tr({key:thElement.nameH,className:'TableHeader'},   
-                React.DOM.td(thElement.nameH),
-                React.DOM.td(thElement.priseH),             
-                React.DOM.td(thElement.inStockH),
-                React.DOM.td(thElement.fotoH), 
+                React.DOM.th(thElement.nameH),
+                React.DOM.th(thElement.priseH),             
+                React.DOM.th(thElement.inStockH),
+                React.DOM.th(thElement.fotoH), 
             );
             headerCode.push(headerCode);
         }
