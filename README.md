@@ -1,3 +1,3 @@
 # FD3-HOMEWORK
-# Petrovskiy
+# Petrovskiy Evgeniy
 Developement with React and Angular course homework
