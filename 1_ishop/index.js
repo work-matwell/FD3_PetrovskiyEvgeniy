@@ -1,42 +1,52 @@
-var ProductBlock = React.createClass({
+var shopName ='Компьютеры и комплектующие';
+var tableHeader = ['Наименование товара', 'Производитель', 'Цена за шт.','Количество на складе', 'Код товара'];
+var productArr = [  
+    {name:'Материнская плата', vendor:'Gigabyte', prise:150, inStock:8, productCode:001},
+    {name:'Оперативная память', vendor:'Kingston', prise:100, inStock:16, productCode:002},
+    {name:'Процессор', vendor:'AMD', prise:230, inStock:8, productCode:003},
+    {name:'Видеокарта', vendor:'MSI', prise:300, inStock:8, productCode:004},
+    {name:'Блок питания', vendor:'beQuiet', prise:320, inStock:8, productCode:005},
+    {name:'Корпус', vendor:'Zalman', prise:165, inStock:8, productCode:006}, 
+]
 
-    displayName:'ProductBlock',
+let ShopTable = React.createClass({ 
+  displayName: 'ShopTable',
 
-    getDefaultProps: function() {
-        return { inStock: "Нет на складе" }
-    },
-    render: function(){
+  render: function() {
+    let fullTable = [];
+    let tableHeader = [];
+    let table = [];
+    this.props.tablehead.map((value, index) => {
+      let headCell = React.DOM.td({key: value}, value);
+      tableHeader.push(headCell);
+    });
+    fullTable.push(
+      React.DOM.thead({key:'thead', className: 'TableHead'},
+        React.DOM.tr({}, tableHeader)
+      )
+    );
+    this.props.goods.forEach(value => {
+      let tableRow = React.DOM.tr({key: value.productCode, className: 'TableRow'},
+        React.DOM.td({}, value.name),
+        React.DOM.td({}, value.vendor),
+        React.DOM.td({}, value.prise),
+        React.DOM.td({}, value.inStock),
+        React.DOM.td({}, value.productCode),   
+      );
+      table.push(tableRow);
+    });
+    fullTable.push(
+      React.DOM.tbody({key: 'tbody', className: 'TableBody'}, table)
+    );
 
-        var headerCode=[];
-        for(var n=0; n<this.props.tHeader.lenght; n++){
-            var thElement = this.props.tHeader[n];
-            var headerCode =
-            React.DOM.tr({key:thElement.nameH,className:'TableHeader'},   
-                React.DOM.th(thElement.nameH),
-                React.DOM.th(thElement.priseH),             
-                React.DOM.th(thElement.inStockH),
-                React.DOM.th(thElement.fotoH), 
-            );
-            headerCode.push(headerCode);
-        }
-        var productsCode = [];
-        for(var i=0; i < this.props.card.length; i++ ){
-            var product = this.props.card[i];
-            var productCode=
-            React.DOM.tr({key:product.name,className:'Product'},   
-                React.DOM.td({className:'Name'},product.name),
-                React.DOM.td({className:'Prise'},product.prise),             
-                React.DOM.td({className:'InStock'},product.inStock),
-                React.DOM.td({className:'Foto'},product.foto), 
-            );
-            productsCode.push(productCode); 
-        }
-        return React.DOM.div({className:'ProductBlock'},
-            React.DOM.span({className:'ShopTitle'},this.props.shopTitle),
-            React.DOM.table({className:'ProductTable'},
-                React.DOM.thead({className:'TableHdr'},headerCode),
-                React.DOM.tbody({className:'Products'},productsCode),
-            ),
-        );
-    },
+    return React.DOM.div(
+      {className: 'shop'},
+      React.DOM.div({className:'ShopName'}, this.props.shop),
+      React.DOM.table({className: 'ShopTable'}, fullTable),
+    )
+  },
 })
+ReactDOM.render(
+  React.createElement(ShopTable, {shop: shopName, goods: productArr, tablehead: tableHeader}),
+  document.getElementById('products')
+);
