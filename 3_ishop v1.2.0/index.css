@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.MainBlock .ShopName{
+  font-size: 20px;
+  font-weight: bold;
+  font-family: cursive;
+  text-align: center;
+}
+td{
+  border: 2px solid black;
+  height: 30px;
+  padding-left: 5px;
+}
+.TableHead td{
+  height: 40px;
+}
+.Table{
+  border-collapse: collapse;
+  border: 2px solid black;
+  margin: 5px auto;
+  text-align: left;
+  width: 90%;
+}
+.TableHead{
+  font-weight: bold;
+  text-align: center;
+}
+.TableRowSelected{
+  background-color: rgb(241, 97, 97);
+  font-weight: 600;
+}
+.DeleteBtn{
+  text-align: center;
+}
